@@ -10,4 +10,12 @@ public static class FactoryOfControllers {
                 
 		return ctrlMenuPause;
 	}
+	
+	static CtrlMenuMain ctrlMenuMain;
+	public static CtrlMenuMain GetCtrlMenuMain() {
+		if(ctrlMenuMain == null) {
+			ctrlMenuMain = GameObject_BB.Find("UI3D Menu Main").GetComponent_BB<CtrlMenuMain>();}
+                
+		return ctrlMenuMain;
+	}
 }

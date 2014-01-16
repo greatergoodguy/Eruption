@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EndScreenTrigger : MonoBehaviour {
@@ -23,7 +23,7 @@ public class EndScreenTrigger : MonoBehaviour {
 	
 	void OnGUI() {
 		if(isGuiOn){
-			GuiUtilsOR.DrawTextureHelper(70, 70, 500, 500, endScreenTexture);	
+			UtilGuiVR.DrawTextureHelper(70, 70, 500, 500, endScreenTexture);	
 		}
 	}
 	

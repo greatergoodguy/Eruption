@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GuiUtilsOR{
+public static class UtilGuiVR{
 	
 	static public Font 	FontReplaceSmall	= null;
 	static public Font 	FontReplaceLarge	= null;

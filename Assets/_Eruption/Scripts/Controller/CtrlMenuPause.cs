@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CtrlMenuPause : Ctrl_Base {
@@ -44,9 +44,9 @@ public class CtrlMenuPause : Ctrl_Base {
 			return;}
 		
 		if(isResumeButtonSelected) {
-			GuiUtilsOR.GUIStereoTexture(70, 70, 500, 500, textures.texSelectedResume);}
+			UtilGuiVR.GUIStereoTexture(70, 70, 500, 500, textures.texSelectedResume);}
 		else {
-			GuiUtilsOR.GUIStereoTexture(70, 70, 500, 500, textures.texSelectedRestart);}
+			UtilGuiVR.GUIStereoTexture(70, 70, 500, 500, textures.texSelectedRestart);}
 	}
 	
 	public void SetVisibleTrue() {
