@@ -62,13 +62,11 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	
 	private RunningAudioController runningAudioController;
 	private SlidingAudioController slidingAudioController;
-	private MenuController menuController;
 
 	public void Start () 
 	{
 		runningAudioController = GameObject.Find("RunningAudio").GetComponent<RunningAudioController>();
 		slidingAudioController = GameObject.Find("SlidingAudio").GetComponent<SlidingAudioController>();
-		menuController = GameObject.Find ("UI Menu").GetComponent<MenuController>();
 		
 		//do some checks to make sure we have the required components
 		if (!rigidbody)
@@ -250,7 +248,7 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 			//print("Pausing Crouching");
 		}
 		
-		if(!slidingAudioController.IsPlaying() && !menuController.isMenuOn())
+		if(!slidingAudioController.IsPlaying())
 			slidingAudioController.Play();
 		
 		if (!mCrouching) //make sure we aren't crouching
@@ -286,7 +284,7 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	{
 		
 		
-		if(slidingAudioController.IsPlaying() && !menuController.isMenuOn())
+		if(slidingAudioController.IsPlaying())
 			slidingAudioController.Pause();
 		
 		mTryingToUncrouch = true; //try to uncrouch if possible

@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour {
 	private ShowHideOnView_STZM showHideOnView;
 	
 	void Start () {
-		uiMenuGO = GameObject.Find("UI Menu");
+		uiMenuGO = GameObject.Find("UI Menu Main");
 		playerGO = GameObject.Find("Player");
 		followCam2D = GameObject.Find("OVRCameraController_STZM").GetComponent<FollowCam2D_STZM>();
 		
