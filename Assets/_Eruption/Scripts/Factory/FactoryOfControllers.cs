@@ -18,4 +18,12 @@ public static class FactoryOfControllers {
                 
 		return ctrlMenuMain;
 	}
+	
+	static CtrlCamera ctrlCamera;
+	public static CtrlCamera GetCtrlCamera() {
+		if(ctrlCamera == null) {
+			ctrlCamera = GameObject_BB.Find("Camera").GetComponent_BB<CtrlCamera>();}
+                
+		return ctrlCamera;
+	}
 }
