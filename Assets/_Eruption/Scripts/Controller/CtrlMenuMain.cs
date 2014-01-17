@@ -2,30 +2,32 @@ using UnityEngine;
 using System.Collections;
 
 public class CtrlMenuMain : MonoBehaviour {
-
-	private bool isPlayButtonSelected = true;
 	
-	private bool isGuiOn = true;
+	DelButton delButtonStart = UtilMock.MockFunction;
+	DelButton delButtonQuit = UtilMock.MockFunction;
 	
-	private GameObject playerGO;
-	private FollowCam2D_STZM followCam2D;
+	GameObject playerGO;
+	FollowCam2D_STZM followCam2D;
 	
-	private MenuPauseMeshRenderers meshRenderers;
+	MenuMainMeshRenderers meshRenderers;
+	
+	bool isPlayButtonSelected = true;
+	bool isActive = true;
 	
 	void Start () {
 		playerGO = GameObject.Find("Player");
 		followCam2D = GameObject.Find("OVRCameraController_STZM").GetComponent<FollowCam2D_STZM>();
 		
-		meshRenderers = GameObject.Find ("Start Quit Sign").GetComponent<MenuPauseMeshRenderers>();
+		meshRenderers = GameObject.Find ("Start Quit Sign").GetComponent<MenuMainMeshRenderers>();
 		
 		meshRenderers.showHighlightStart();
 		
-		TurnGuiOn();
+		SetActiveFalse();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(isGuiOn){
+		if(isActive){
 			if(Input.GetKeyDown(KeyCode.UpArrow)){
 				isPlayButtonSelected = true;
 				meshRenderers.showHighlightStart();
@@ -35,23 +37,39 @@ public class CtrlMenuMain : MonoBehaviour {
 				meshRenderers.showHighlightQuit();
 			}
 			
-			if(Input.GetKeyDown(KeyCode.Return) && isPlayButtonSelected)
-				TurnGuiOff();
-			else if(Input.GetKeyDown(KeyCode.Return) && !isPlayButtonSelected)
-				Application.Quit();
+			if(Input.GetKeyDown(KeyCode.Return) && isPlayButtonSelected) {
+				delButtonStart();
+			}
+			else if(Input.GetKeyDown(KeyCode.Return) && !isPlayButtonSelected) {
+				delButtonQuit();
+			}
 		}
 	}
 	
-	public bool IsGuiOn(){		return isGuiOn;}
-	public void TurnGuiOn(){	
-		isGuiOn = true;
+	public bool IsActive(){
+		return isActive;}
+	
+	public void SetActiveTrue(){	
+		isActive = true;
 		if(followCam2D != null || gameObject != null)
 			followCam2D.SetTarget(transform, true);
 		Time.timeScale = 0;
 	}
-	public void TurnGuiOff(){	
-		isGuiOn = false;
+	
+	public void SetActiveFalse(){	
+		isActive = false;
 		followCam2D.SetTarget(playerGO.transform, false);
 		Time.timeScale = 1;
+	}
+	
+	// ==========================
+	// Button Delegates
+	// ==========================
+	public void SetDelButtonStart(DelButton delButtonStart){
+		this.delButtonStart = delButtonStart;
+	}
+	
+	public void SetDelButtonQuit(DelButton delButtonQuit){
+		this.delButtonQuit = delButtonQuit;
 	}
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class MenuPauseMeshRenderers : MonoBehaviour {
+public class MenuMainMeshRenderers : MonoBehaviour {
 	
 	public MeshRenderer mrHighlightStart;
 	public MeshRenderer mrHighlightQuit;

@@ -3,16 +3,17 @@ using System.Collections;
 
 public class GSMenuMain : GS_Base {
 	
-	CtrlMenuPause ctrlMenuPause;
+	CtrlMenuMain ctrlMenuMain;
 	
 	public GSMenuMain() {
-		ctrlMenuPause = FactoryOfControllers.GetCtrlMenuPause();
+		ctrlMenuMain = FactoryOfControllers.GetCtrlMenuMain();
 	}
 	
 	public override void StartState () {
 		base.StartState ();
 		
-		ctrlMenuPause.SetActive(true);
+		ctrlMenuMain.SetDelButtonStart(ctrlMenuMain.SetActiveFalse);
+		ctrlMenuMain.SetDelButtonQuit(Application.Quit);
 	}
 	
 	public override bool IsFinished() {
