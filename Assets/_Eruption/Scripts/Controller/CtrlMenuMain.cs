@@ -6,20 +6,13 @@ public class CtrlMenuMain : MonoBehaviour {
 	DelButton delButtonStart = UtilMock.MockFunction;
 	DelButton delButtonQuit = UtilMock.MockFunction;
 	
-	GameObject playerGO;
-	FollowCam2D_STZM followCam2D;
-	
 	MenuMainMeshRenderers meshRenderers;
 	
 	bool isPlayButtonSelected = true;
 	bool isActive = true;
 	
 	void Start () {
-		playerGO = GameObject.Find("Player");
-		followCam2D = GameObject.Find("OVRCameraController_STZM").GetComponent<FollowCam2D_STZM>();
-		
 		meshRenderers = GameObject.Find ("Start Quit Sign").GetComponent<MenuMainMeshRenderers>();
-		
 		meshRenderers.showHighlightStart();
 		
 		SetActiveFalse();
@@ -51,14 +44,11 @@ public class CtrlMenuMain : MonoBehaviour {
 	
 	public void SetActiveTrue(){	
 		isActive = true;
-		if(followCam2D != null || gameObject != null)
-			followCam2D.SetTarget(transform, true);
 		Time.timeScale = 0;
 	}
 	
 	public void SetActiveFalse(){	
 		isActive = false;
-		followCam2D.SetTarget(playerGO.transform, false);
 		Time.timeScale = 1;
 	}
 	

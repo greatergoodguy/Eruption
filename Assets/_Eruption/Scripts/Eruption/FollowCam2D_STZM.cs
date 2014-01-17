@@ -73,20 +73,17 @@ public class FollowCam2D_STZM: MonoBehaviour {
 		}
 	}
 
-	public void SetTarget(Transform inTarget)
-	{
+	public void SetTarget(Transform inTarget) {
 		target = inTarget;
 		isClose = false;
 	}
 	
-	public void SetTarget(Transform inTarget, bool isClose)
-	{
+	public void SetTarget(Transform inTarget, bool isClose) {
 		target = inTarget;
 		this.isClose = isClose;
 	}
 	
 	public void cameraShake(float _intensity, float _decay) {
-		
 		intensity = _intensity;
 		decay = _decay;
 		shaking = true;

@@ -16,6 +16,7 @@ public class DeathVolume_STZM : MonoBehaviour
 	IEnumerator PlayerDeath(GameObject player)
 	{
 		player.GetComponent<PlatformerAnimation_STZM>().PlayerDied();
+		
 		player.GetComponent<PlatformerController_STZM>().RemoveControl();
 
 		yield return new WaitForSeconds(2.5f);

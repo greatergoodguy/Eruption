@@ -6,6 +6,8 @@ public class GSMenuMain : GS_Base {
 	CtrlMenuMain ctrlMenuMain;
 	CtrlCamera ctrlCamera;
 	
+	bool isFinished;
+	
 	public GSMenuMain() {
 		ctrlMenuMain = FactoryOfControllers.GetCtrlMenuMain();
 		ctrlCamera = FactoryOfControllers.GetCtrlCamera();
@@ -15,16 +17,29 @@ public class GSMenuMain : GS_Base {
 		base.StartState ();
 		
 		ctrlCamera.SetPositionMenuMain();
+		
 		ctrlMenuMain.SetActiveTrue();
-		ctrlMenuMain.SetDelButtonStart(ctrlMenuMain.SetActiveFalse);
+		ctrlMenuMain.SetDelButtonStart(Start);
 		ctrlMenuMain.SetDelButtonQuit(Application.Quit);
+		
+		isFinished = false;
+	}
+	
+	public override void ExitState () {
+		base.ExitState();
+		ctrlMenuMain.SetActiveFalse();
 	}
 	
 	public override bool IsFinished() {
-		return false;
+		return isFinished;
 	}
         
 	public override IGameState GetNextGameState() {
-		return GameFlow.gsMock;
+		return GameFlow.gsLevelVolcano;
+	}
+	
+	void Start() {
+		ctrlMenuMain.SetActiveFalse();
+		isFinished = true;
 	}
 }

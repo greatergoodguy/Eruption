@@ -60,11 +60,15 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	float origColliderCenterY;						//Original sizes of collision box
 	float origColliderSizeY;
 	
+	CtrlAudio ctrlAudio;
+	
 	private RunningAudioController runningAudioController;
 	private SlidingAudioController slidingAudioController;
 
-	public void Start () 
-	{
+	public void Start () {
+		
+		ctrlAudio = FactoryOfControllers.GetCtrlAudio();
+		
 		runningAudioController = GameObject.Find("RunningAudio").GetComponent<RunningAudioController>();
 		slidingAudioController = GameObject.Find("SlidingAudio").GetComponent<SlidingAudioController>();
 		
