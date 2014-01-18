@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class UnlockDoubleJump_STZM : MonoBehaviour 
 {
 	void OnTriggerEnter(Collider other)
 	{
-		PlatformerPhysics_STZM physics = other.gameObject.GetComponent<PlatformerPhysics_STZM>();
+		PlatformerPhysics_BB physics = other.gameObject.GetComponent<PlatformerPhysics_BB>();
 		if (physics)
 		{
 			//unlock double jump and destroy ourselves

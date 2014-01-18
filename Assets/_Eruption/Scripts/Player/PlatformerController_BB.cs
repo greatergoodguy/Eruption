@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PlatformerController_STZM : MonoBehaviour
-{
-	PlatformerPhysics_STZM mPlayer;
+public class PlatformerController_BB : MonoBehaviour {
+	PlatformerPhysics_BB mPlayer;
 	bool mHasControl;
 	
 	bool isAnalogStickDownEnter = false;
@@ -13,7 +12,7 @@ public class PlatformerController_STZM : MonoBehaviour
 	void Start () 
 	{
 		mHasControl = true;
-		mPlayer = GetComponent<PlatformerPhysics_STZM>();
+		mPlayer = GetComponent<PlatformerPhysics_BB>();
 		if (mPlayer == null)
 			Debug.LogError("This object also needs a PlatformerPhysics component attached for the controller to function properly");
 	}

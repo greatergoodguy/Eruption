@@ -34,7 +34,7 @@ public class LavaBall : MonoBehaviour {
 			target = GameObject.Find("Player");
 		}
 		
-		audioListenerGO = GameObject.Find("OVRCameraController_STZM");
+		audioListenerGO = GameObject.Find("OVRCameraController_BB");
 		
 		Vector3 midpointHeightOffsetVec = new Vector3(0, midpointHeightOffset, 0);
 		Vector3 targetHeightOffsetVec = new Vector3(0, targetHeightOffset, 0);

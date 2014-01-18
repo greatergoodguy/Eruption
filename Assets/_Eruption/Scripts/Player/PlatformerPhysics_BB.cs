@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlatformerPhysics_STZM : MonoBehaviour
-{
+public class PlatformerPhysics_BB : MonoBehaviour {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//NOTE: changing these numbers will only change the default values of the script, not the values of an object the script is already applied to
 	//If you already applied the script to an object, you have to change the values in the inspector to get an actual change
@@ -550,8 +549,7 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 		mCharacterWidth = collider.bounds.size.x;
 	}
 
-	public void SetRespawnPoint(Vector3 spawnPoint)
-	{
+	public void SetRespawnPoint(Vector3 spawnPoint) {
 		mStartPosition = spawnPoint;
 	}
 

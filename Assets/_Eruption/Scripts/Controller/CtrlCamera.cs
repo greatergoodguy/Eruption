@@ -12,14 +12,14 @@ public class CtrlCamera : Ctrl_Base {
 	FollowCam2D_BB followCam2D;
 	
 	void Awake() {
-		tCameraContainer = transform.FindChild_BB("OVRCameraController_STZM");
+		tCameraContainer = transform.FindChild_BB("OVRCameraController_BB");
 		
 		tPositionMenuMain = transform.FindChild_BB("Position Menu Main");
 		tPositionUndefined = transform.FindChild_BB("Position Undefined");
 		
 		CtrlPlayer ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
 		tPlayerBase = ctrlPlayer.GetTransformPlayerBase();
-		followCam2D = GameObject.Find("OVRCameraController_STZM").GetComponent<FollowCam2D_BB>();
+		followCam2D = tCameraContainer.GetComponent<FollowCam2D_BB>();
 	}
 	
 	public void TrackPlayer() {

@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class PlatformerAnimation_STZM : MonoBehaviour
-{
+public class PlatformerAnimation_BB : MonoBehaviour {
 	public Transform animatedPlayerModel; //Animated model that will have all the animations in it
 	bool mPlayerDead = false;
     bool mIdle = false;
@@ -134,7 +133,7 @@ public class PlatformerAnimation_STZM : MonoBehaviour
 	{
         PlayAnim("slideout");
 
-		if (GetComponent<PlatformerPhysics_STZM>().IsOnWall())
+		if (GetComponent<PlatformerPhysics_BB>().IsOnWall())
 			LandedOnWall();
 		else
 			animatedPlayerModel.animation.CrossFade("walk", 2.0f);
@@ -142,7 +141,7 @@ public class PlatformerAnimation_STZM : MonoBehaviour
 
 	void LandedOnGround()
 	{
-		if (!GetComponent<PlatformerPhysics_STZM>().IsCrouching())
+		if (!GetComponent<PlatformerPhysics_BB>().IsCrouching())
 		{
             PlayAnim("walk");
 		}
@@ -150,11 +149,11 @@ public class PlatformerAnimation_STZM : MonoBehaviour
 
 	void LandedOnWall()
 	{
-        if (!GetComponent<PlatformerPhysics_STZM>().IsCrouching())
+        if (!GetComponent<PlatformerPhysics_BB>().IsCrouching())
         {
             PlayAnim("onwall");
 
-            if (!GetComponent<PlatformerPhysics_STZM>().IsWallOnRightSide())
+            if (!GetComponent<PlatformerPhysics_BB>().IsWallOnRightSide())
             {
                 animatedPlayerModel.transform.localPosition = new Vector3(0.45f, 0, 0);
                 GoLeft();
@@ -170,7 +169,7 @@ public class PlatformerAnimation_STZM : MonoBehaviour
 	void ReleasedWall()
 	{
 		print("released");
-		if (!animatedPlayerModel.animation["jump"].enabled && !GetComponent<PlatformerPhysics_STZM>().IsCrouching())
+		if (!animatedPlayerModel.animation["jump"].enabled && !GetComponent<PlatformerPhysics_BB>().IsCrouching())
             PlayAnim("walk");
 	}
 

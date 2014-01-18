@@ -6,12 +6,12 @@ public class LavaballEruptionTrigger : MonoBehaviour {
 	private GameObject audioListenerGO;	
 	
 	void Start() {
-		audioListenerGO = GameObject.Find("OVRCameraController_STZM");
+		audioListenerGO = GameObject.Find("OVRCameraController_BB");
 	}
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.Equals(GameObject.Find("Player"))) {
+		if (other.gameObject.Equals(GameObject.Find("Player Base"))) {
 			
 			GameObject lavaBallEruptionAudio = Instantiate(Resources.Load("LavaBallEruptionAudio")) as GameObject;
 			lavaBallEruptionAudio.transform.parent = audioListenerGO.transform;
