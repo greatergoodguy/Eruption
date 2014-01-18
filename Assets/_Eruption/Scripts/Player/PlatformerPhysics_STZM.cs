@@ -62,14 +62,12 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	
 	CtrlAudio ctrlAudio;
 	
-	private RunningAudioController runningAudioController;
 	private SlidingAudioController slidingAudioController;
 
 	public void Start () {
 		
 		ctrlAudio = FactoryOfControllers.GetCtrlAudio();
 		
-		runningAudioController = GameObject.Find("RunningAudio").GetComponent<RunningAudioController>();
 		slidingAudioController = GameObject.Find("SlidingAudio").GetComponent<SlidingAudioController>();
 		
 		//do some checks to make sure we have the required components
@@ -133,12 +131,12 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 		
 		float AUDIO_DIRECTION_THRESHOLD = 0.3f;
 		
-		if(!runningAudioController.IsPlaying() && mOnGround && !mInJump && !mCrouching && (direction < -AUDIO_DIRECTION_THRESHOLD || direction > AUDIO_DIRECTION_THRESHOLD)){
-			runningAudioController.Play();
+		if(!ctrlAudio.SFX_PlayerRunning_IsPlaying() && mOnGround && !mInJump && !mCrouching && (direction < -AUDIO_DIRECTION_THRESHOLD || direction > AUDIO_DIRECTION_THRESHOLD)){
+			ctrlAudio.SFX_PlayerRunning_Play();
 			//print("Playing");
 		}
-		else if(runningAudioController.IsPlaying() && mOnGround && (direction > -AUDIO_DIRECTION_THRESHOLD && direction < AUDIO_DIRECTION_THRESHOLD)){
-			runningAudioController.Pause();	
+		else if(ctrlAudio.SFX_PlayerRunning_IsPlaying() && mOnGround && (direction > -AUDIO_DIRECTION_THRESHOLD && direction < AUDIO_DIRECTION_THRESHOLD)){
+			ctrlAudio.SFX_PlayerRunning_Pause();	
 			//print("Pausing Standing Still");
 		}
 		
@@ -190,9 +188,8 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	public void Jump() 
 	{
 		
-		if(runningAudioController.IsPlaying()){
-			runningAudioController.Pause();
-			//print("Pausing Jumping");
+		if(ctrlAudio.SFX_PlayerRunning_IsPlaying()){
+			ctrlAudio.SFX_PlayerRunning_Pause();
 		}
 		
 		mJumpPressed = true;
@@ -247,8 +244,8 @@ public class PlatformerPhysics_STZM : MonoBehaviour
     //Called when the player presses the crouch button
 	public void Crouch() 
 	{
-		if(runningAudioController.IsPlaying()){
-			runningAudioController.Pause();
+		if(ctrlAudio.SFX_PlayerRunning_IsPlaying()){
+			ctrlAudio.SFX_PlayerRunning_Pause();
 			//print("Pausing Crouching");
 		}
 		

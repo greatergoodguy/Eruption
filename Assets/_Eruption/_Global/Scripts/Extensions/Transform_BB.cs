@@ -8,7 +8,7 @@ public static class Transform_BB {
         return result;
 	}
 	
-	public static GameObject FindChildAsGameObject_BB(this Transform transform, string childName){
+	public static GameObject FindChildAsGO_BB(this Transform transform, string childName){
 		Transform result = transform.FindChild(childName);
 		Assert_BB.AssertNotNull(result);
         return result.gameObject;

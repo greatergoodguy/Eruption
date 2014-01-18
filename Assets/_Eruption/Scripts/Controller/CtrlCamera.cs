@@ -8,8 +8,8 @@ public class CtrlCamera : Ctrl_Base {
 	Transform tPositionMenuMain;
 	Transform tPositionUndefined;
 	
-	GameObject playerBaseGO;
-	FollowCam2D_STZM followCam2D;
+	Transform tPlayerBase;
+	FollowCam2D_BB followCam2D;
 	
 	void Awake() {
 		tCameraContainer = transform.FindChild_BB("OVRCameraController_STZM");
@@ -18,12 +18,12 @@ public class CtrlCamera : Ctrl_Base {
 		tPositionUndefined = transform.FindChild_BB("Position Undefined");
 		
 		CtrlPlayer ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
-		playerBaseGO = ctrlPlayer.GetGOPlayerBase();
-		followCam2D = GameObject.Find("OVRCameraController_STZM").GetComponent<FollowCam2D_STZM>();
+		tPlayerBase = ctrlPlayer.GetTransformPlayerBase();
+		followCam2D = GameObject.Find("OVRCameraController_STZM").GetComponent<FollowCam2D_BB>();
 	}
 	
 	public void TrackPlayer() {
-		followCam2D.SetTarget(playerBaseGO.transform, false);
+		followCam2D.SetTarget(tPlayerBase, false);
 	}
 	
 	public void SetPositionMenuMain() {

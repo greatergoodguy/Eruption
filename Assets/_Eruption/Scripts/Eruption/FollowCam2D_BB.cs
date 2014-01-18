@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FollowCam2D_STZM: MonoBehaviour {
+public class FollowCam2D_BB: MonoBehaviour {
 	public Transform target;
 
 	private float distance = 15.0f;

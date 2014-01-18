@@ -3,13 +3,17 @@ using System.Collections;
 
 public class CtrlPlayer : Ctrl_Base {
 	
-	GameObject goPlayerBase;
+	Transform tPlayerBase;
 	
 	void Awake() {
-		goPlayerBase = transform.FindChildAsGameObject_BB("Player Base");
+		tPlayerBase = transform.FindChild_BB("Player Base");
 	}
 	
-	public GameObject GetGOPlayerBase() {
-		return goPlayerBase;	
+	public Transform GetTransformPlayerBase() {
+		return tPlayerBase;	
+	}
+	
+	public void AddTransformToPlayerBase(Transform otherTransform) {
+		otherTransform.parent = tPlayerBase;
 	}
 }
