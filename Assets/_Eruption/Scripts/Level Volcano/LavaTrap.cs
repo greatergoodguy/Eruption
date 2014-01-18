@@ -9,15 +9,14 @@ public class LavaTrap : MonoBehaviour {
 	public float riseDuration = 1.5f;
 	public float holdTopDuration = 1.5f;
 	
-	public GameObject lavaTrapObject;
-	public AudioSource lavaTrapSound;
+	AudioSource asLavaTrap;
 	
-	private Vector3 riseVel = Vector3.zero;
-	private Vector3 descendVel = Vector3.zero;
+	Vector3 riseVel = Vector3.zero;
+	Vector3 descendVel = Vector3.zero;
 	
-	private StateLT state = StateLT.HoldBottom;
+	StateLT state = StateLT.HoldBottom;
 	
-	private float stateTimer = 0;
+	float stateTimer = 0;
 	
 	public enum ModeLT{
 		PlayerTrigger,
@@ -34,10 +33,8 @@ public class LavaTrap : MonoBehaviour {
 	void Start() {
 		riseVel = new Vector3(0, riseSpeed, 0);
 		descendVel = new Vector3(0, -riseSpeed, 0);
-		//lavaTrapObject = Instantiate(Resources.Load("Lava Trap Audio")) as GameObject;
-		lavaTrapObject = GameObject.Find ("Lava Trap Audio");
-		//transform.parent = lavaTrapObject.transform;
-		lavaTrapSound = lavaTrapObject.GetComponent<AudioSource>();
+
+		asLavaTrap = transform.FindChild_BB("LT Audio").GetComponent_BB<AudioSource>();
 	}
 	
 	void Update () {
@@ -118,9 +115,9 @@ public class LavaTrap : MonoBehaviour {
 		state = newState;
 		stateTimer = 0;
 		if (state.Equals(StateLT.HoldTop)) {
-			lavaTrapSound.volume = 1.0f;
+			asLavaTrap.volume = 1.0f;
 		} else {
-			lavaTrapSound.volume = 0.0f;
+			asLavaTrap.volume = 0.0f;
 		}
 	}
 }
