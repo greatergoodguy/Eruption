@@ -7,9 +7,8 @@ public class PlatformerAnimation_BB : MonoBehaviour {
     bool mIdle = false;
 	GameObject deathSound;
 
-	void Start () 
-	{
-				deathSound = Instantiate(Resources.Load ("DeathSound")) as GameObject;
+	void Start () {
+		deathSound = Instantiate(Resources.Load ("DeathSound")) as GameObject;
 		deathSound.transform.parent = GameObject.Find("Player").transform;
 		
 		//Do some error checks first
@@ -89,8 +88,7 @@ public class PlatformerAnimation_BB : MonoBehaviour {
 		animatedPlayerModel.transform.localScale = localScale;
 	}
 
-	public void PlayerDied()
-	{
+	public void PlayerDied() {
 		deathSound.GetComponent<AudioSource>().Play();
         PlayAnim("death");
 		mPlayerDead = true;
