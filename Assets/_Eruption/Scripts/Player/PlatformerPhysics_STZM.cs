@@ -61,14 +61,10 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	float origColliderSizeY;
 	
 	CtrlAudio ctrlAudio;
-	
-	private SlidingAudioController slidingAudioController;
 
 	public void Start () {
 		
 		ctrlAudio = FactoryOfControllers.GetCtrlAudio();
-		
-		slidingAudioController = GameObject.Find("SlidingAudio").GetComponent<SlidingAudioController>();
 		
 		//do some checks to make sure we have the required components
 		if (!rigidbody)
@@ -246,11 +242,10 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	{
 		if(ctrlAudio.SFX_IsPlaying_PlayerRunning()){
 			ctrlAudio.SFX_Pause_PlayerRunning();
-			//print("Pausing Crouching");
 		}
 		
-		if(!slidingAudioController.IsPlaying())
-			slidingAudioController.Play();
+		if(!ctrlAudio.SFX_IsPlaying_PlayerSliding())
+			ctrlAudio.SFX_Play_PlayerSliding();
 		
 		if (!mCrouching) //make sure we aren't crouching
 		{
@@ -281,12 +276,9 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	}
 
     //Called when the player releases the crouch button
-	public void UnCrouch()
-	{
-		
-		
-		if(slidingAudioController.IsPlaying())
-			slidingAudioController.Pause();
+	public void UnCrouch() {
+		if(ctrlAudio.SFX_IsPlaying_PlayerSliding())
+			ctrlAudio.SFX_Pause_PlayerSliding();
 		
 		mTryingToUncrouch = true; //try to uncrouch if possible
 	}
