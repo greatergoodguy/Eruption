@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlatformerPhysics_STZM : MonoBehaviour
@@ -131,12 +131,12 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 		
 		float AUDIO_DIRECTION_THRESHOLD = 0.3f;
 		
-		if(!ctrlAudio.SFX_PlayerRunning_IsPlaying() && mOnGround && !mInJump && !mCrouching && (direction < -AUDIO_DIRECTION_THRESHOLD || direction > AUDIO_DIRECTION_THRESHOLD)){
-			ctrlAudio.SFX_PlayerRunning_Play();
+		if(!ctrlAudio.SFX_IsPlaying_PlayerRunning() && mOnGround && !mInJump && !mCrouching && (direction < -AUDIO_DIRECTION_THRESHOLD || direction > AUDIO_DIRECTION_THRESHOLD)){
+			ctrlAudio.SFX_Play_PlayerRunning();
 			//print("Playing");
 		}
-		else if(ctrlAudio.SFX_PlayerRunning_IsPlaying() && mOnGround && (direction > -AUDIO_DIRECTION_THRESHOLD && direction < AUDIO_DIRECTION_THRESHOLD)){
-			ctrlAudio.SFX_PlayerRunning_Pause();	
+		else if(ctrlAudio.SFX_IsPlaying_PlayerRunning() && mOnGround && (direction > -AUDIO_DIRECTION_THRESHOLD && direction < AUDIO_DIRECTION_THRESHOLD)){
+			ctrlAudio.SFX_Pause_PlayerRunning();	
 			//print("Pausing Standing Still");
 		}
 		
@@ -188,8 +188,8 @@ public class PlatformerPhysics_STZM : MonoBehaviour
 	public void Jump() 
 	{
 		
-		if(ctrlAudio.SFX_PlayerRunning_IsPlaying()){
-			ctrlAudio.SFX_PlayerRunning_Pause();
+		if(ctrlAudio.SFX_IsPlaying_PlayerRunning()){
+			ctrlAudio.SFX_Pause_PlayerRunning();
 		}
 		
 		mJumpPressed = true;
@@ -244,8 +244,8 @@ public class PlatformerPhysics_STZM : MonoBehaviour
     //Called when the player presses the crouch button
 	public void Crouch() 
 	{
-		if(ctrlAudio.SFX_PlayerRunning_IsPlaying()){
-			ctrlAudio.SFX_PlayerRunning_Pause();
+		if(ctrlAudio.SFX_IsPlaying_PlayerRunning()){
+			ctrlAudio.SFX_Pause_PlayerRunning();
 			//print("Pausing Crouching");
 		}
 		
