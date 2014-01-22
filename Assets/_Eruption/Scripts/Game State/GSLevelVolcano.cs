@@ -4,10 +4,12 @@ using System.Collections;
 public class GSLevelVolcano : GS_Base {
 	
 	CtrlAudio ctrlAudio;
+	CtrlPlayer ctrlPlayer;
 	CtrlCamera ctrlCamera;
 	
 	public GSLevelVolcano() {
 		ctrlAudio = FactoryOfControllers.GetCtrlAudio();
+		ctrlPlayer = FactoryOfControllers.GetCtrlPlayer();
 		ctrlCamera = FactoryOfControllers.GetCtrlCamera();
 	}
 	
@@ -15,7 +17,7 @@ public class GSLevelVolcano : GS_Base {
 		base.StartState ();
 		
 		ctrlAudio.Music_Play_Volcano();
-		ctrlCamera.TrackPlayer();
+		ctrlCamera.Track(ctrlPlayer.GetTransformPlayerBase());
 	}
 	
 	public override void ExitState () {
